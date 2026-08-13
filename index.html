@@ -670,8 +670,11 @@ var PONTE_URL='https://script.google.com/macros/s/AKfycbwz-dlPvQEwHi5MYRP0vRkplN
 var PONTE_TOKEN='';
 function pontePegar(){var e=document.getElementById('sheetId');return (e?e.value.trim():'')||PONTE_URL;}
 function ponteToken(){var e=document.getElementById('ponteToken');return (e?e.value.trim():'')||PONTE_TOKEN;}
+function ponteSalvar(){try{var u=document.getElementById('sheetId'),t=document.getElementById('ponteToken');if(u&&u.value.trim())localStorage.setItem('ponteUrl',u.value.trim());if(t&&t.value.trim())localStorage.setItem('ponteToken',t.value.trim());}catch(e){}}
+function ponteRestaurar(){try{var u=document.getElementById('sheetId'),t=document.getElementById('ponteToken');if(u&&!u.value&&localStorage.getItem('ponteUrl'))u.value=localStorage.getItem('ponteUrl');if(t&&!t.value&&localStorage.getItem('ponteToken'))t.value=localStorage.getItem('ponteToken');}catch(e){}}
 function baseMsg(html){var m=document.getElementById('baseMsg');if(m)m.innerHTML=html;}
 function carregarBase(){
+  ponteSalvar();
   var u=pontePegar();
   if(!u){baseMsg('Cole a URL da ponte (Apps Script) para ligar a base viva. Sem ela, o painel usa a copia embutida.');return;}
   baseMsg('Buscando na base...');
@@ -690,6 +693,7 @@ function carregarBase(){
       baseMsg('<span class="selo-base sb-local">BASE EMBUTIDA</span> Nao consegui ler a base ('+e.message+'). O painel segue com a copia embutida de 13/08/2026.');
    });}
 function regGravar(){
+  ponteSalvar();
   var u=pontePegar(),M=document.getElementById('regMsg');
   if(!u){M.innerHTML='<b>Falta a URL da ponte.</b> Cole no card "Base viva" logo abaixo.';return;}
   var v=rgv('VEICULO'),s=rgv('SERVICO');
@@ -728,6 +732,7 @@ function renderCompras(){
     el.innerHTML=htm;
   });
 }
+ponteRestaurar();
 </script>
 </body>
 </html>
