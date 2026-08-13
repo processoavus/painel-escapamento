@@ -1,0 +1,11 @@
+# Segredos — nunca commitar
+_SECRETS/
+**/_SECRETS/
+*.json
+!package.json
+*credencial*
+*credential*
+*token*
+*.gs
+oi_creds*
+avus-precificacao*
