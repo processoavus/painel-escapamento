@@ -666,7 +666,7 @@ function aplicarAdmin(){
   try{if(carro&&svc&&CARROS[carro]&&CARROS[carro][svc])loadReceita(carro,svc);}catch(e){}
 }
 
-var PONTE_URL='';
+var PONTE_URL='https://script.google.com/macros/s/AKfycbwz-dlPvQEwHi5MYRP0vRkplNg7hPM4CS_REeQeBwe7dGpDsiBjhzGGKjj3As8RBXvEhA/exec';
 var PONTE_TOKEN='';
 function pontePegar(){var e=document.getElementById('sheetId');return (e?e.value.trim():'')||PONTE_URL;}
 function ponteToken(){var e=document.getElementById('ponteToken');return (e?e.value.trim():'')||PONTE_TOKEN;}
